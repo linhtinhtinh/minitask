@@ -1,0 +1,37 @@
+package org.firstinspires.ftc.teamcode;
+
+
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
+import com.qualcomm.robotcore.util.Range;
+
+@TeleOp(name = "RobotMotor1")
+public class Robotmotor1 extends OpMode {
+    public DcMotor hd;
+    public DcMotor hd1;
+    @Override
+    public void init() {
+        hd = hardwareMap.get(DcMotor.class,"hd");
+        hd1 = hardwareMap.get(DcMotor.class,"hd1");
+
+
+        hd.setDirection(DcMotor.Direction.FORWARD);
+        hd1.setDirection(DcMotor.Direction.REVERSE);
+    }
+
+    @Override
+    public void loop() {
+
+            hd.setPower(gamepad1.left_stick_y);
+            hd1.setPower(gamepad1.left_stick_y);
+            hd1.setPower(gamepad1.right_stick_x);
+            hd.setPower(-gamepad1.right_stick_x);
+
+    }
+}
